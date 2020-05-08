@@ -1,10 +1,5 @@
-/*----- constants -----*/
-
-// const colors = null;
-
 const playerOne = 'x';
 const playerTwo = 'circle';
-
 const winning_combos = [
     [0,1,2],
     [3,4,5],
@@ -15,29 +10,33 @@ const winning_combos = [
     [0,4,8],
     [2,4,6]
 ];
+
 const cellEl = document.querySelectorAll('[data]');
-const board = document.getElementById('board');
+const board = document.getElementById('gameBoard');
 const winningMessageEl = document.getElementById('winningMessage')
+const restartButton = document.getElementById('restartButton')
 const winningMessageText = document.querySelector('[data-winning-message-text]')
 let circleTurn;
 
 startGame();
 
-//check for win
-//check for draw
+restartButton.addEventListener('click', startGame)
 
 //init click- determine turn, place x||o, check for win or draw
 
 function startGame () {
     circleTurn = false;
     cellEl.forEach(cell => {
+        cell.classList.remove(playerOne)
+        cell.classList.remove(playerTwo)
+        cell.removeEventListener('click', handleClick)
         cell.addEventListener('click', handleClick, {once : true})
         })
     setBoardHover()
+    winningMessageEl.classList.remove('show')
     }
 
 function handleClick(e) {
-    // console.log('clicked')
     const cell = e.target
     const currentClass = circleTurn ? playerTwo : playerOne
     placePiece(cell, currentClass)
@@ -54,7 +53,7 @@ function handleClick(e) {
 
 function endGame(draw) {
     if (draw) {
-        winningMessageEl.innerText = "Draw!"
+        winningMessageText.innerText = 'Draw!'
     } else {
         winningMessageText.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
     }
@@ -63,8 +62,8 @@ function endGame(draw) {
 
 function isDraw() {
     return [...cellEl].every(cell => {
-        return cellEl.classList.contains(playerOne) || 
-        cellEl.classList.contains(playerTwo)
+        return cell.classList.contains(playerOne) || 
+        cell.classList.contains(playerTwo)
     })
 }
 
