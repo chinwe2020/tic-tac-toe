@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Tic Tac Toe</h1>
+        <h3>X's turn</h3>
+    </header>
+        <div class="board" id="gameboard">
+            <div class="cell bottom right" data></div>
+            <div class="cell bottom" data></div>
+            <div class="cell bottom left" data></div>
+            <div class="cell bottom right" data></div>
+            <div class="cell bottom" data></div>
+            <div class="cell bottom left" data></div>
+            <div class="cell right" data></div>
+            <div class="cell" data></div>
+            <div class="cell left" data></div>
+        </div>
+        <div class="winning-message" id="winningMessage">
+            <div data-winning-message-text></div>
+            <button id="restartButton">Reset</button>
+        </div>
+</body>
+</html>
