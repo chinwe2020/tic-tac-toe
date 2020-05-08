@@ -50,8 +50,8 @@ header {
 
 .cell.x::before,
 .cell.x::after,
-.board.circle .cell:not(.x):not(.circle):hover::before,
-.board.circle .cell:not(.x):not(.circle):hover::after  {
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after  {
     content: '';
     position: absolute;
     width: calc(var(--mark-size) * .15);

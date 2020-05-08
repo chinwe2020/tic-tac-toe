@@ -12,7 +12,7 @@ const winning_combos = [
 ];
 
 const cellEl = document.querySelectorAll('[data]');
-const board = document.getElementById('gameBoard');
+const board = document.getElementById('gameboard');
 const winningMessageEl = document.getElementById('winningMessage')
 const restart = document.getElementById('restartButton')
 const winningMessageText = document.querySelector('[data-winning-message-text]')
