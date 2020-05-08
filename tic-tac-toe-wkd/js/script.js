@@ -14,16 +14,15 @@ const winning_combos = [
 const cellEl = document.querySelectorAll('[data]');
 const board = document.getElementById('gameBoard');
 const winningMessageEl = document.getElementById('winningMessage')
-const restartButton = document.getElementById('restartButton')
+const restart = document.getElementById('restartButton')
 const winningMessageText = document.querySelector('[data-winning-message-text]')
 let circleTurn;
 
 startGame();
 
-restartButton.addEventListener('click', startGame)
+restart.addEventListener('click', startGame)
 
-//init click- determine turn, place x||o, check for win or draw
-
+//init click- determine turn, place x||o, check for win or draw, show msg, and restart
 function startGame () {
     circleTurn = false;
     cellEl.forEach(cell => {
@@ -51,6 +50,7 @@ function handleClick(e) {
 
 }
 
+//display win or draw
 function endGame(draw) {
     if (draw) {
         winningMessageText.innerText = 'Draw!'
@@ -60,6 +60,7 @@ function endGame(draw) {
     winningMessageEl.classList.add('show')
  }
 
+ 
 function isDraw() {
     return [...cellEl].every(cell => {
         return cell.classList.contains(playerOne) || 
@@ -67,7 +68,7 @@ function isDraw() {
     })
 }
 
-//place the mark
+//place current player's x or o in cell
 function placePiece(cell, currentClass) {
 cell.classList.add(currentClass)
 }
@@ -87,6 +88,7 @@ function setBoardHover() {
     }
 }
 
+//check array for win
 function checkWin(currentClass) {
     return winning_combos.some(combos => {
         return combos.every(idx => {
